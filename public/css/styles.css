@@ -1,4 +1,8 @@
 @import "compass/css3";
+#home, #signup{
+  font-size: 26px;
+  font-style: serif;
+}
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
@@ -13,10 +17,33 @@
     letter-spacing: 5px;
 }
 .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: #C166BE !important;
 }
 
+body{
+  background-color: #737CA1;
+}
+.footer-padding {
+	padding-bottom: 60px;
+}
+.tex{
+  color: black;
+}
+.footer {
+	position: relative;
+	text-align: center;
+  color: black;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #737CA1;
+}
 
+.footer p {
+	margin-top: 25px;
+	font-size: 12px;
+  color: #fff;
+}
 
 
 
@@ -48,6 +75,17 @@ a:hover {
   padding: 0;
   margin: 0 0 40px 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 .tab-group:after {
   content: "";
   display: table;
@@ -77,6 +115,7 @@ a:hover {
 .tab-content > div:last-child {
   display: none;
 }
+
 h1 {
   text-align: center;
   color: #ffffff;
@@ -146,7 +185,7 @@ textarea {
 .top-row > div:last-child {
   margin: 0;
 }
-.button {
+.buttons {
   border: 0;
   outline: none;
   border-radius: 0;
@@ -194,8 +233,8 @@ textarea {
   color: var(--color-text);
   margin: 0;
   padding: 0;
-  height: 90vh;
-  width: 90vw;
+  height: 650px;  ;
+  width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,9 +253,8 @@ textarea {
   color: var(--color-white);
   font-size: 3rem;
   transform: translateY(-50%);
-  top: 50%;
+  top: 50%;
 }
-
 .next_button {
   padding: 0;
   margin: 0;
@@ -230,20 +268,21 @@ textarea {
   color: var(--color-white);
   font-size: 3rem;
   transform: translateY(-50%);
-  top: 50%;
+  top: 50%;
 }
 
-ul,
-li {
+ul,li{
   list-style: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
 }
 
+
+
 .carousel {
   width: 50vw;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,7 +291,7 @@ li {
 
 .carousel_slider {
   width: 100%;
-  height: 87%;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -266,6 +305,7 @@ li {
 .img {
   min-width: 50vw;
   height: 100%;
+  margin-left: 60px;
   object-fit: cover;
 }
 
@@ -290,12 +330,187 @@ li {
   margin: 0 5px;
   cursor: pointer;
 }
-
-.form {
+/* float right*/
+.image-carousel-with-text {
   display: flex;
-  align-items: center;
-  font-size: 1rem;
 }
 
-.auto_slide {
+
+.text {
+  width: 110%;
+  font-family: serif;
+  font-size: 20px;/* This is the width of the text container */
+  padding: 150px 150px;
+  padding-right: 5px;
+  float: right;/* This is to create some space between the text and the image carousel */
+}
+
+.goals{
+  padding-top: 600px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+  font-family: "Montserrat";
+  text-align: center;
+}
+/*comment*/
+h1 , h2 , h3 , h4 , h5 , h6{
+  font-family:"Montserrat";
+}
+
+ p{
+  color:#8f8f8f;
+  font-size: 1.3rem;
+  font-family: "montserrat-bold";
+}
+
+/* headings */
+.big-heading{
+  font-family: "Montserrat";
+  font-size: 5rem;
+  line-height: 1.5;
+  padding-top: 100px;
+}
+
+.section-heading{
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+/* features */
+#features{
+  position: relative;
+  z-index: 1;
+}
+
+.feature-title{
+  line-height: 1.5rem;
+}
+
+.container-fluid{
+  padding: 7% 15%;
+}
+
+/* section */
+.colored-section{
+  background-color: #1ab188 ;
+  color: #fff;
+}
+
+.white-section{
+  background-color: #fff;
+}
+
+/* icons */
+.fas {
+color: #1ab188;
+font-size: 3rem;
+}
+
+.fas:hover{
+  color: #179b77;
+}
+
+.socials {
+color: #000;
+
+}
+
+/* navigation bar */
+.navbar{
+  background-color:#fff; 
+padding: 0 0 1.5rem;
+}
+
+.nav-item{
+  padding: 0 16px;
+}
+
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+/* download buttons */
+.download-button{
+  margin: 5% 3% 5% 0;
+}
+
+/* title section */
+#title .container-fluid{
+  padding: 3% 15% 7%;
+    text-align: left;
+}
+/* title-image */
+.title-image{
+  width: 80%;
+    position: absolute;
+    right: 30%;
+}
+
+/* testimonials */
+.images{
+  width: 300px;
+  height: 380px;
+}
+.img{
+  width: 150px;
+  height: 380px;
+margin: 0 auto;
+  position: absolute;
+}
+/* press */
+#press{
+     background-color: #1ab188 ;
+    }
+
+.press-logo{
+  width: 15%;
+  margin: 20px 20px 50px;
+}
+
+/* pricing section */
+ #pricing{
+  padding: 80px;
+}
+
+.pricing-column{
+  padding: 3% 5%;
+}
+
+.price-text{
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1028px){
+  #title{
+text-align: center;
+  }
+  .title-image{
+    position: static;
+  }
+}
+
+/* footer */
+#footer{
+  font-family: "montserrat-black";
+  background-color: #fff;
 }
