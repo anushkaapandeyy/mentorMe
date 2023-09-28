@@ -1,0 +1,27 @@
+{% extends "prototype/navbar.html" %} {% load static %} {% block body %}
+    <h1>Welcome to your dashboard, {{request.user.first_name}}</h1>
+    {% if request.user.user_type == 'ME' %}
+    <div>Your recommended mentors</div>
+    {% for mentor in mentors %}
+    <div> {{mentor}} </div>
+    {% endfor %}
+    <br>
+    <div>Your questions</div>
+    {% for question in questions %}
+        <div>{{question.title}}</div>
+    {% endfor %}
+    <div>Your answers</div>
+    <div id="similar_questions"></div>
+    {% else %}
+    <div>Your notifications</div>
+    <div id="notifications"></div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    {{data|json_script:"questions"}}
+    <script type="text/babel" src="{% static 'prototype/questions.js' %}" ></script>
+
+    {{answers|json_script:"answers"}}
+    <script type="text/babel" src="{% static 'prototype/answer.js' %}" ></script>
+{% endblock %}

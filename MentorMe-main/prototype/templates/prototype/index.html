@@ -1,0 +1,326 @@
+{% extends "prototype/navbar.html" %} {% load static %} {% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <link rel="stylesheet" href="{% static 'prototype/styles.css' %}">
+  {% endblock %}
+  {% block body %}
+
+  <div class="row">
+  <div class="col-lg-6">
+  <h1 class="big-heading">Get guidance from experienced mentor for free.</h1>
+  <div class="col-lg-6">
+     <img class="title-image" src="{% static 'prototype/slideshow2.png' %}" alt="iphone-mockup">
+   </div>
+
+  </div>
+
+
+
+      </div>
+
+  <!-- Features -->
+
+  <section class="white-section" id="features">
+<div class="container-fluid">
+    <div class="row">
+
+  <div class="col-lg-4  ">
+
+
+<i class="fas fa-check-circle"></i>
+    <h3 class="feature-title">  Easy to use.</h3>
+    <p class="para">Easy accessible for anyone.</p>
+    </div>
+    <div class="col-lg-4 ">
+
+
+<i class="fas fa-bullseye"></i>
+    <h3 class="feature-title"> Necessary Guidance</h3>
+    <p class="para">Get guaranteed guidance any time.</p>
+      </div>
+        <div class="col-lg-4 ">
+<i class="fas fa-heart"></i>
+    <h3 class="feature-title">Guaranteed to work.</h3>
+    <p class="para">Find the love of your
+       dog's life or your money back.</p>
+  </div>
+</div>
+</div>
+  </section>
+
+  <!-- Carousels -->
+  <section class="images">
+    <img src="{% static 'prototype/slideshow1.jpg' %}" alt="logo" class="img">
+  </section>
+
+
+
+    <!-- Press -->
+
+
+
+    <!-- Pricing -->
+
+    <section  class="white-section"id="pricing">
+
+      <h2 class="section-heading">Guidance What Every Student Needs</h2>
+      <p class="para">students come get guidance from mentors.</p>
+
+
+
+  <div class=" row">
+
+
+
+    <div class="pricing-column col-lg-4 col-md-6">
+
+      <div class="card">
+
+        <div class="card-header">
+            <h3>Resources</h3>
+        </div>
+        <div class="card-body">
+      <h2 class="price-text"></h2>
+      <p class="para">Workshops every week</p>
+      <p class="para">webinars on demands</p>
+      <p class="para">Alumni contacts</p>
+      </div>
+      </div>
+    </div>
+
+  <div class="pricing-column col-lg-4 col-md-6">
+      <div class="card">
+        <div class="card-header">
+        <h3>Features</h3>
+        </div>
+        <div class="card-body">
+      <h2 class="price-text"></h2>
+          <p class="para">Unlimited Mentor meets</p>
+          <p class="para">guidance for every field</p>
+          <p class="para">virtual sessions</p>
+        </div>
+      </div>
+  </div>
+
+  <div class="pricing-column col-lg-4">
+
+
+      <div class="card">
+        <div class="card-header">
+      <h3>guidance</h3>
+        </div>
+        <div class="card-body">
+   <h2 class="price-text"></h2>
+        <p class="para">Pirority Listing</p>
+        <p class="para">Unlimited Matches</p>
+        <p class="para">Unlimited Messages</p>
+    </div>
+      </div>
+  </div>
+  </div>
+  </section>
+
+
+    <!-- Call to Action -->
+
+    <section class="colored-section" id="cta">
+  <div class="container-fluid">
+
+
+      <h3 class="big-heading">Find the way to your career today.</h3>
+    </section>
+
+{% endblock %}
+
+</html>
+
+<script>
+  // The code will be long
+  // because I want to use MVC Design Pattern for this.
+
+  window.onload = function () {
+    const helpers = (function () {
+      function getDOMElements(DOMSelectors) {
+        let DOMElements = {};
+        for (let selector in DOMSelectors) {
+          if (DOMSelectors.hasOwnProperty(selector)) {
+            DOMElements[selector] = document.querySelector(
+              DOMSelectors[selector]
+            );
+          }
+        }
+        return DOMElements;
+      }
+      return {
+        getDOMElements
+      };
+    })();
+
+    const modal = (function () {
+      const state = {
+        counter: 0,
+        intervalID: 0
+      };
+      let CONSTANTS = {
+        ACTIVE_CLASS_NAME: "active",
+        TIMER: 1500,
+        TRANSITION: "all .3s ease-out"
+      };
+      function addConstant(key, value) {
+        CONSTANTS[key] = value;
+      }
+
+      return {
+        state,
+        CONSTANTS,
+        addConstant
+      };
+    })();
+
+    const view = (function (helpers) {
+      const DOMSelectors = {
+        carouselInnerSlider: ".content_inner_slider",
+        dots: ".dots",
+        slide: "#slide",
+        prevButton: ".prev_button",
+        nextButton: ".next_button",
+        carouselImages: ".content_inner_slider > img",
+        dot: ".dot"
+      };
+      const DOMElements = helpers.getDOMElements(DOMSelectors);
+      const CAROUSEL_IMAGES = [
+        ...document.querySelectorAll(DOMSelectors.carouselImages)
+      ];
+      const DOTS = [...document.querySelectorAll(DOMSelectors.dot)];
+      function moveSliderToIndex(IMAGE_SIZE, index) {
+        DOMElements.carouselInnerSlider.style.transform = `translateX(-${
+          IMAGE_SIZE * index
+        }px)`;
+      }
+      function addClassToIndex(className, index) {
+        CAROUSEL_IMAGES[index].classList.add(className);
+      }
+      function removeClassToIndex(className, index) {
+        CAROUSEL_IMAGES[index].classList.remove(className);
+      }
+      function addBackGroundToCurrentIndex(index) {
+        DOTS[index].style.background = "#000";
+      }
+      function removeBackGroundToCurrentIndex(index) {
+        DOTS[index].style.background = "transparent";
+      }
+      function setTransition(element, transition) {
+        element.style.transition = `${transition}`;
+      }
+      return {
+        DOMSelectors,
+        moveSliderToIndex,
+        addClassToIndex,
+        removeClassToIndex,
+        addBackGroundToCurrentIndex,
+        removeBackGroundToCurrentIndex,
+        setTransition
+      };
+    })(helpers);
+
+    const controller = (function (modal, view, helpers) {
+      const DOMSelectors = view.DOMSelectors;
+      const DOMElements = helpers.getDOMElements(DOMSelectors);
+      function initApp() {
+        const imageSize = DOMElements.carouselInnerSlider.clientWidth;
+        const imagesCount =
+          [...document.querySelectorAll(DOMSelectors.carouselImages)].length - 1;
+        modal.addConstant("IMAGE_SIZE", imageSize);
+        modal.addConstant("TOTAL_IMAGES", imagesCount);
+        view.moveSliderToIndex(modal.CONSTANTS.IMAGE_SIZE, modal.state.counter);
+        handleAdding();
+        DOMElements.nextButton.addEventListener("click", handleNextImage);
+        DOMElements.prevButton.addEventListener("click", handlePrevImage);
+        DOMElements.dots.addEventListener("click", handleDotClick);
+        DOMElements.slide.addEventListener("change", handleSlide);
+      }
+      function removeEventListeners() {
+        DOMElements.nextButton.removeEventListener("click", handleNextImage);
+        DOMElements.prevButton.removeEventListener("click", handlePrevImage);
+        DOMElements.dots.removeEventListener("click", handleDotClick);
+        DOMElements.slide.removeEventListener("change", handleSlide);
+      }
+      function handleNextImage() {
+        handleRemove();
+        if (modal.state.counter === modal.CONSTANTS.TOTAL_IMAGES) {
+          modal.state.counter = -1;
+        }
+        modal.state.counter += 1;
+        handleAdding();
+        view.moveSliderToIndex(modal.CONSTANTS.IMAGE_SIZE, modal.state.counter);
+      }
+      function handlePrevImage() {
+        handleRemove();
+        if (modal.state.counter === 0) {
+          modal.state.counter = modal.CONSTANTS.TOTAL_IMAGES + 1;
+        }
+        modal.state.counter -= 1;
+        handleAdding();
+        view.moveSliderToIndex(modal.CONSTANTS.IMAGE_SIZE, modal.state.counter);
+      }
+      function handleDotClick(event) {
+        const value = Number(event.target.value);
+        if (!isNaN(value)) {
+          handleRemove();
+          modal.state.counter = value;
+          view.moveSliderToIndex(modal.CONSTANTS.IMAGE_SIZE, modal.state.counter);
+          handleAdding();
+        }
+      }
+      function handleSlide(event) {
+        const isChecked = event.target.checked;
+        if (isChecked) {
+          modal.state.intervalID = setInterval(() => {
+            handleNextImage();
+          }, modal.CONSTANTS.TIMER);
+        } else {
+          clearInterval(modal.state.intervalID);
+          modal.state.intervalID = null;
+        }
+      }
+      function handleRemove() {
+        view.removeClassToIndex(
+          modal.CONSTANTS.ACTIVE_CLASS_NAME,
+          modal.state.counter
+        );
+        view.removeBackGroundToCurrentIndex(modal.state.counter);
+      }
+      function handleAdding() {
+        view.addClassToIndex(
+          modal.CONSTANTS.ACTIVE_CLASS_NAME,
+          modal.state.counter
+        );
+        view.addBackGroundToCurrentIndex(modal.state.counter);
+      }
+      DOMElements.carouselInnerSlider.addEventListener(
+        "transitionstart",
+        removeEventListeners
+      );
+      DOMElements.carouselInnerSlider.addEventListener("transitionend", initApp);
+      view.setTransition(
+        DOMElements.carouselInnerSlider,
+        modal.CONSTANTS.TRANSITION
+      );
+      return {
+        initApp,
+        removeEventListeners
+      };
+    })(modal, view, helpers);
+
+    controller.initApp();
+
+    window.addEventListener("resize", () => {
+      controller.removeEventListeners();
+      controller.initApp();
+    });
+  };
+
+</script>
+<%- include("partials/footer"); -%>

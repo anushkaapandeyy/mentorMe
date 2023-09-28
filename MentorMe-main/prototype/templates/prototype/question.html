@@ -1,0 +1,26 @@
+{% extends "prototype/navbar.html" %} {% load static %} {% block body %}
+
+    {% if flag %}
+    <form action="{% url 'question' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="answers"></div>
+        <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <form action="{% url 'check' %}" method="post">
+        
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit">Submit</button>
+    
+    {% endif %}
+    </form>
+    <div id="similar_questions"></div>
+
+{% endblock %}
+{% block script %}
+{{similar_questions|json_script:"answers"}}
+    <script type="text/babel" src="{% static 'prototype/answer.js' %}" ></script>
+{% endblock %}

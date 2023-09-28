@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% load static %}
+<head>
+    {% block script %}
+    {% endblock %}
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <meta charset="utf-8">
+  <title>Mentor Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+<!-- css style sheets-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'prototype/styles.css' %}">
+
+
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/4e2fbf1e4f.js" crossorigin="anonymous"></script>
+
+  <!-- bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'prototype/styles.css' %}">
+  {% block head %}
+    {% endblock %}
+</head>
+<body>
+  <section class="colored-section" id="title">
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <img src="{% static 'prototype/MentorMe.png' %}" alt="LOGO" >
+      <!--  <p class="navbar-brand"></p> -->
+      </div>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- 6 -->
+          {% if user.is_authenticated %}
+            {% if user.user_type == "ME" %}
+                <li id="signup"><a href="{% url 'question' %}">Ask a question</a></li>
+            {% endif %}
+          <li id="signup"><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li id="signup"><a href="{% url 'login' %}">Login/SignUp</a></li>
+          {% endif %}
+        </ul>
+    </div>
+  </nav>
+  
+</div>
+  </section>
+  {% block body %}
+  {% endblock %}
+
+  <body>
